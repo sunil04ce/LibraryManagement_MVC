@@ -30,7 +30,7 @@ namespace LibraryManagement_MVC.Controllers
                         Session["UserId"] = obj.Id.ToString();
                         Session["UserName"] = obj.Name.ToString();
                         //Session["UserEmail"] = obj.Email;
-                        return RedirectToAction("DashBoard");
+                        return RedirectToAction("Index", "Home");
                     } 
                     else
                     {
@@ -40,17 +40,6 @@ namespace LibraryManagement_MVC.Controllers
             }
 
             return View(user);
-        }
-
-        public ActionResult DashBoard()
-        {
-            if (Session["UserId"] != null)
-            {
-                return View();
-            }
-            else {
-                return RedirectToAction("Login");
-            }
         }
     }
 }
