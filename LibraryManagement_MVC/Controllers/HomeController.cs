@@ -10,7 +10,14 @@ namespace LibraryManagement_MVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Session["UserId"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
 
         public ActionResult About()
