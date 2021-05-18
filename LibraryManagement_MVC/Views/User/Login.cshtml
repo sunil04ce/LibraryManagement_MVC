@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = null;
 }
 
 
@@ -11,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <fieldset>
+    <fieldset style="height:150px; width:300px;">
         <legend>Login</legend>
         <table>
             <tr>
