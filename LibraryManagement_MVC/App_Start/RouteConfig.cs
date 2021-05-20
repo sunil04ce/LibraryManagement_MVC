@@ -16,7 +16,8 @@ namespace LibraryManagement_MVC
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces : new string[] { "LibraryManagement_MVC.Controllers" }
             );
         }
     }
