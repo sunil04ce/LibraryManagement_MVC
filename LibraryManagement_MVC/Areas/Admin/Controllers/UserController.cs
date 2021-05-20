@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace LibraryManagement_MVC.Areas.Admin.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         public ActionResult Index()
