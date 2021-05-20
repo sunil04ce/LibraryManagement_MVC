@@ -213,6 +213,10 @@
     <Content Include="Areas\Book\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Book\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Book\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Book\Views\Home\Create.cshtml" />
+    <Content Include="Areas\Book\Views\Home\Edit.cshtml" />
+    <Content Include="Areas\Book\Views\Home\Details.cshtml" />
+    <Content Include="Areas\Book\Views\Home\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -236,6 +240,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

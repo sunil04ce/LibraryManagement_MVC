@@ -1,19 +1,19 @@
 ﻿@model LibraryManagement_MVC.Models.User
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Register";
     Layout = null;
 }
 
+<br />
+<br />
 
-<br />
-<br />
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+@using (Html.BeginForm("Register", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     <fieldset style="height:150px; width:500px;">
-        <legend>Login</legend>
+        <legend>Registration</legend>
         <table>
             <tr>
                 <td>@Html.LabelFor(m => m.Email)</td>
@@ -26,13 +26,19 @@
                 <td>@Html.PasswordFor(m => m.Password)</td>
                 <td>@Html.ValidationMessageFor(m => m.Password)</td>
             </tr>
+
+            @*<tr>
+            <td>@Html.LabelFor(m => m.Password)</td>
+            <td>@Html.PasswordFor(m => m.Password)</td>
+            <td>@Html.ValidationMessageFor(m => m.Password)</td>
+        </tr>*@
             <tr><td><br /></td></tr>
             <tr>
-                <td><input type="submit" value="Login" /></td>
+                <td><input type="submit" value="Register" /></td>
             </tr>
             <tr><td><br /></td></tr>
             <tr>
-                <td>@Html.ActionLink("Register New User", "Register", "Home")</td>
+                <td>@Html.ActionLink("Login", "Index", "Home")</td>
             </tr>
         </table>
 

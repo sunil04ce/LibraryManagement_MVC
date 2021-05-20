@@ -14,21 +14,25 @@ namespace LibraryManagement_MVC.Models
 
     public class UserMetadata
     {
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Gender is required.")]
         public string Gender { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; }
 
-        [Required]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$", ErrorMessage = "Password should be minimum eight characters, at least one letter, one number and one special character")]
+        [Required(ErrorMessage = "Password is required.")]
+        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$", ErrorMessage = "Password should be minimum eight characters, at least one letter, one number and one special character.")]
         public string Password { get; set; }
 
-        [Required]        
+        //[Required(ErrorMessage = "Confirm password is required.")]
+        //[Compare("Password", ErrorMessage ="Passwords do not match.")]
+        //public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "RoleId is required.")]        
         public Nullable<int> RoleId { get; set; }
     }
 }
