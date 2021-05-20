@@ -1,15 +1,35 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model LibraryManagement_MVC.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
 }
 
 
-<br/>
-<div class="row">
-    <fieldset>
-        <legend>DashBoard</legend>
-        @if (Session["UserName"] != null)
-        {
-            <text>Welcome @Session["UserName"].ToString()!</text>
-        }
+<br />
+<br />
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset style="height:150px; width:500px;">
+        <legend>Login</legend>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.Email)</td>
+                <td>@Html.TextBoxFor(m => m.Email)</td>
+                <td>@Html.ValidationMessageFor(m => m.Email)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.PasswordFor(m => m.Password)</td>
+                <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login" /></td>
+            </tr>
+        </table>
+
     </fieldset>
-</div>
+}

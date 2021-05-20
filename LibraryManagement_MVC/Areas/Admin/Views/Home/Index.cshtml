@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<div class="row">
+    <fieldset>
+        <legend>DashBoard</legend>
+        @if (Session["UserName"] != null)
+        {
+            <text>Welcome @Session["UserName"].ToString()!</text>
+        }
+    </fieldset>
+</div>
+
