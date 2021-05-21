@@ -6,17 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
+using LibraryManagement_MVC.Services;
 
 namespace LibraryManagement_MVC.Areas.Admin.Controllers
 {
     [Authorize]
     public class UserController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             using (LibraryManagementContext db = new LibraryManagementContext())
             {
-                IEnumerable<User> users = db.Users.OrderBy(x => x.Id).ToList();
+                IPagedList<User> users = db.Users.OrderBy(x => x.Id).ToList().ToPagedList(page ?? 1, AppSettings.PageSizeInList);
                 return View(users);
             }
         }

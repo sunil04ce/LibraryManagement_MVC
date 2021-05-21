@@ -1,4 +1,6 @@
-﻿@model IEnumerable<LibraryManagement_MVC.Models.Book>
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<LibraryManagement_MVC.Models.Book>
 
 @{
     ViewBag.Title = "Index";
@@ -12,31 +14,31 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.First().Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category)
+            @Html.DisplayNameFor(model => model.First().Category)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Author)
+            @Html.DisplayNameFor(model => model.First().Author)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Copies)
+            @Html.DisplayNameFor(model => model.First().Copies)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PubName)
+            @Html.DisplayNameFor(model => model.First().PubName)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.ISBN)
+            @Html.DisplayNameFor(model => model.First().ISBN)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Copyright)
+            @Html.DisplayNameFor(model => model.First().Copyright)
         </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.DateAdded)
+            @Html.DisplayNameFor(model => model.First().DateAdded)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.First().Status)
         </th>
         <th></th>
     </tr>
@@ -79,3 +81,13 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model,
+    page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions()
+    {
+        Display = PagedListDisplayMode.IfNeeded,
+        DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+        DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded
+    }
+)

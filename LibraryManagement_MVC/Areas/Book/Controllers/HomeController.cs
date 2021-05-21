@@ -4,6 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
+using LibraryManagement_MVC.Services;
 
 namespace LibraryManagement_MVC.Areas.Book.Controllers
 {
@@ -11,11 +14,11 @@ namespace LibraryManagement_MVC.Areas.Book.Controllers
     public class HomeController : Controller
     {
         // GET: Book/Home
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             using(LibraryManagementContext db = new LibraryManagementContext())
             {
-                IEnumerable<Models.Book> books = db.Books.OrderBy(x => x.Id).ToList();
+                IPagedList<Models.Book> books = db.Books.OrderBy(x => x.Id).ToList().ToPagedList(page ?? 1, AppSettings.PageSizeInList);
                 return View(books);
             }
         }
