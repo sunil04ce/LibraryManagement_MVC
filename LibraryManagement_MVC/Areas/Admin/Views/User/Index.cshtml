@@ -1,4 +1,6 @@
-﻿@model IEnumerable<LibraryManagement_MVC.Models.User>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<LibraryManagement_MVC.Models.User>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +14,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gender)
+            @Html.DisplayNameFor(model => model.First().Gender)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.First().Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RoleId)
+            @Html.DisplayNameFor(model => model.First().RoleId)
         </th>
         <th></th>
     </tr>
@@ -50,3 +52,13 @@
     }
 
 </table>
+
+@Html.PagedListPager(Model,
+    page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions()
+    {
+        Display = PagedListDisplayMode.IfNeeded,
+        DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+        DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded
+    }
+)
