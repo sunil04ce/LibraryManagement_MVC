@@ -1,4 +1,8 @@
-﻿@model LibraryManagement_MVC.Models.User
+﻿@using CaptchaMvc.HtmlHelpers;
+@using CaptchaMvc;
+
+
+@model LibraryManagement_MVC.Models.User
 
 @{
     ViewBag.Title = "Login";
@@ -25,6 +29,17 @@
                 <td>@Html.LabelFor(m => m.Password)</td>
                 <td>@Html.PasswordFor(m => m.Password)</td>
                 <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>
+                    @*@Html.Captcha(5)*@
+                    @Html.MathCaptcha()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="has-error"> @ViewBag.CaptchaErrorMessage</p>
+                </td>
             </tr>
             <tr><td><br /></td></tr>
             <tr>
